@@ -9,10 +9,12 @@ public class Main {
         String botName = System.getenv("TELEGRAM_BOT_NAME");
         String botToken = System.getenv("TELEGRAM_BOT_TOKEN");
 
+
+        BotLogic botLogic = new BotLogic(new responsesToUser(), new UserRequests());
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
 
-            botsApi.registerBot(new TelegramBot(botName, botToken));
+            botsApi.registerBot(new TelegramBot(botName, botToken, botLogic));
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
