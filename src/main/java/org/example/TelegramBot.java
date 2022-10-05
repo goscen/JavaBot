@@ -31,7 +31,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         // We check if the update has a message and the message has text
         if (update.hasMessage() && update.getMessage().hasText()) {
-            SendMessage message = new SendMessage(); // Create a SendMessage object with mandatory fields
+            var message = new SendMessage(); // Create a SendMessage object with mandatory fields
             String finalMessage = botLogic.respondToUser(update.getMessage().getChatId(),update.getMessage().getText()) ;
             message.setChatId(update.getMessage().getChatId().toString());
             message.setText(finalMessage);

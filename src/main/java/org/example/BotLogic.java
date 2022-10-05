@@ -18,7 +18,7 @@ public class BotLogic {
         }
         return response.unknownMessage;
     }
-    public BotLogic(responsesToUser response, UserRequests request){
+    public BotLogic(responsesToUser response, UserRequests request) {
         this.response = response;
         this.request = request;
     }

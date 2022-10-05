@@ -4,6 +4,9 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+
+// todo: сделать рядом консольного бота
+
 public class Main {
     public static void main(String[] args) {
         String botName = System.getenv("TELEGRAM_BOT_NAME");
