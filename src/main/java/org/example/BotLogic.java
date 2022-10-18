@@ -3,7 +3,14 @@ package org.example;
 import java.util.Objects;
 
 public class BotLogic {
-    private final responsesToUser response;
+    HelpCommand HelpCommand = new HelpCommand();
+    HelpHandler HelpHandler = new HelpHandler();
+    ResponsesToUser responsesToUser = new ResponsesToUser();
+    public String RespondToUser(String message) {
+        return responsesToUser.RespondToUser(message);
+    }
+
+    /* private final responsesToUser response;
     private final UserRequests request;
 
     public String respondToUser(Long userId, String message) {
@@ -18,9 +25,7 @@ public class BotLogic {
         }
         return response.unknownMessage;
     }
-    public BotLogic(responsesToUser response, UserRequests request){
-        this.response = response;
-        this.request = request;
-    }
+    */
+
 
 }

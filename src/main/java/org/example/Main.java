@@ -10,7 +10,7 @@ public class Main {
         String botToken = System.getenv("TELEGRAM_BOT_TOKEN");
 
 
-        BotLogic botLogic = new BotLogic(new responsesToUser(), new UserRequests());
+        BotLogic botLogic = new BotLogic();
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
 
