@@ -6,9 +6,25 @@ public class ResponsesToUser {
     HelpCommand helpCommand = new HelpCommand();
     HelpHandler helpHandler = new HelpHandler();
 
+    ICommand [] commands;
+    ICommandHandler[] commandHandlers;
+
+    public ResponsesToUser(ICommand[] commands, ICommandHandler[] handlers) {
+        this.commands = commands;
+        this.commandHandlers = handlers;
+    }
+
     public String RespondToUser(String message){
-        if(Objects.equals(helpCommand.getName(), message)){
-            return helpHandler.handle(helpCommand).getValue();
+        for(var cmd: commands) {
+            if (cmd.isTriggered(message)) {
+                cmd.handle(message);
+            }
+        }
+
+    }
+    public String RespondToUser(String message){
+        if(helpCommand.isTriggered(message)){
+            return helpHandler.handle(helpCommand);
         }
 
         return "Не понял";
