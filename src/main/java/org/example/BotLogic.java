@@ -1,11 +1,11 @@
 package org.example;
 
-import java.util.Objects;
-
 public class BotLogic {
     HelpCommand HelpCommand = new HelpCommand();
-    HelpHandler HelpHandler = new HelpHandler();
-    ResponsesToUser responsesToUser = new ResponsesToUser();
+
+    ICommand[] commands = {new HelpCommand()};
+    ICommandHandler[] commandsHandlers = {new HelpHandler()};
+    ResponsesToUser responsesToUser = new ResponsesToUser(commands, commandsHandlers);
     public String RespondToUser(String message) {
         return responsesToUser.RespondToUser(message);
     }

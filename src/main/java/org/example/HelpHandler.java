@@ -1,8 +1,8 @@
 package org.example;
 
-public class HelpHandler implements ICommandHandler<HelpCommand, HelpResult> {
+public class HelpHandler implements ICommandHandler {
     @Override
-    public HelpResult handle(HelpCommand command) {
-        return new HelpResult();
+    public String handle() {
+        return new HelpResult().getValue();
     }
 }
