@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class HelpCommand implements ICommand<String> {
+public class HelpCommand implements ICommand{
 
     @Override
     public String getName() {
@@ -12,6 +12,11 @@ public class HelpCommand implements ICommand<String> {
     @Override
     public boolean isTriggered(String string) {
         return Objects.equals(getName(), string);
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
     }
 
     @Override

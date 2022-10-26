@@ -11,6 +11,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final String botToken;
 
     private final BotLogic botLogic;
+
     TelegramBot(String botName, String botToken, BotLogic botLogic) {
         this.botName = botName;
         this.botToken = botToken;
@@ -27,11 +28,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return botToken;
     }
+
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage message = new SendMessage();
-            String finalMessage = botLogic.RespondToUser(update.getMessage().getText());
+            String finalMessage = botLogic.respondToUser(update.getMessage().getText());
             message.setChatId(update.getMessage().getChatId().toString());
             message.setText(finalMessage);
             try {
