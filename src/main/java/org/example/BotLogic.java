@@ -10,7 +10,7 @@ public class BotLogic {
 
     public String respondToUser(String message) {
         for (var cmd : commands) {
-            if (cmd.isTriggered(message)) {
+            if (cmd.isTriggered(message.toLowerCase())) {
                 return cmd.getHandler().handle();
             }
         }
