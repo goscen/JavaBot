@@ -9,9 +9,15 @@ public class BotLogic {
     }
 
     public String respondToUser(String message) {
+        String[] splitCommand = message.split(" ");
+        System.out.println(splitCommand[0]);
         for (var cmd : commands) {
-            if (cmd.isTriggered(message.toLowerCase())) {
-                return cmd.getHandler().handle();
+            if (cmd.isTriggered(splitCommand[0].toLowerCase())) {
+                if (splitCommand.length == 2)
+                    return cmd.getHandler().handle();
+                else if (splitCommand.length == 1) {
+                    return cmd.getDescription();
+                }
             }
         }
         return "?";

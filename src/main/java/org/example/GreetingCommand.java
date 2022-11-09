@@ -14,7 +14,7 @@ public class GreetingCommand implements ICommand{
     }
 
     public String getDescription(){
-        return null;
+        return "Привет";
     }
 
 }

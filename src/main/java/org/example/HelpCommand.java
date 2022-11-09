@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class HelpCommand implements ICommand{
+public class HelpCommand implements ICommand {
 
     @Override
     public String getName() {
@@ -20,7 +20,8 @@ public class HelpCommand implements ICommand{
         return new HelpHandler();
     }
 
-    public String getDescription(){
-        return "Этот бот может помочь найти статистику игрока в R6S";
+    public String getDescription() {
+        return "Этот бот может помочь найти статистику игрока в:\n" +
+                "/findr6 - в r6s";
     }
 }
