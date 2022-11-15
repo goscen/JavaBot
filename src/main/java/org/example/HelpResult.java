@@ -6,4 +6,9 @@ public class HelpResult implements ICommandResult {
     public String getValue() {
         return (new HelpCommand().getDescription());
     }
+
+    @Override
+    public String getValue(String name) {
+        return null;
+    }
 }

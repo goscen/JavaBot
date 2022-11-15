@@ -9,7 +9,8 @@ import java.io.IOException;
 public class R6Parser implements IParser {
 
     Document doc;
-    private String name;
+    String name;
+
     @Override
     public void getDocument() {
         try {

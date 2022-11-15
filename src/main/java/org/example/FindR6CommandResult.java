@@ -5,12 +5,13 @@ public class FindR6CommandResult implements ICommandResult{
     public String getValue() {
         return null;
     }
+    @Override
     public String getValue(String name) {
         R6Parser parser = new R6Parser(name);
+        parser.getDocument();
         String kd = parser.getKD();
-        String hours = parser.getHours();
-        String wins = parser.winPercent();
-        String playedMatch = parser.playedMatch();
+
         return "KD:" + kd + "\n";
+
     }
 }
