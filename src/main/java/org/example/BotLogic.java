@@ -13,9 +13,10 @@ public class BotLogic {
 
         for (var cmd : commands) {
             if (cmd.isTriggered(splitCommand[0].toLowerCase())) {
-                if (splitCommand.length == 2)
-                    return cmd.getHandler().handle();
-                else if (splitCommand.length == 1) {
+                if (splitCommand.length == 2) {
+                    System.out.println(splitCommand[1]);
+                    return cmd.getHandler().handle(splitCommand[1]);
+                } else if (splitCommand.length == 1) {
                     return cmd.getDescription();
                 }
             }
