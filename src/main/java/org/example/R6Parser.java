@@ -3,20 +3,24 @@ package org.example;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.io.IOException;
 
 public class R6Parser implements IParser {
 
-    Document doc;
+    private Document doc;
     String name;
-
+    Boolean bFlag = Boolean.FALSE;
     @Override
     public void getDocument() {
         try {
+
             doc = Jsoup.connect("https://r6.tracker.network/profile/pc/" + name).get();
+
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            bFlag = Boolean.TRUE;
+
         }
 
     }
@@ -29,14 +33,15 @@ public class R6Parser implements IParser {
 
     @Override
     public String getKD() {
-        Elements tagInf = doc.select("div[data-stat=PVPWLRatio]");
-        return tagInf.html();
+        Elements tagInf = doc.select("div[data-stat=PVPKDRatio]");
+        System.out.println(tagInf.getClass().getName());
+        return tagInf.html().split("\n")[0];
     }
 
     @Override
     public String winPercent() {
-        Elements tagInf = doc.select("div[data-stat=PVPKDRatio]");
-        return tagInf.html();
+        Elements tagInf = doc.select("div[data-stat=PVPWLRatio]");
+        return tagInf.html().split("\n")[0];
     }
 
     @Override
@@ -44,7 +49,8 @@ public class R6Parser implements IParser {
         Elements tagInf = doc.select("div[data-stat=PVPMatchesPlayed]");
         return tagInf.html();
     }
-    R6Parser(String name){
+
+    R6Parser(String name) {
         this.name = name;
     }
 }
