@@ -1,4 +1,7 @@
-package org.example;
+package results;
+
+import commands.HelpCommand;
+import results.ICommandResult;
 
 public class HelpResult implements ICommandResult {
 

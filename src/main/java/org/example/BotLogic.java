@@ -1,5 +1,7 @@
 package org.example;
 
+import commands.ICommand;
+
 public class BotLogic {
 
     ICommand[] commands;

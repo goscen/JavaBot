@@ -1,4 +1,4 @@
-package org.example;
+package results;
 
 public interface ICommandResult {
     public String getValue();

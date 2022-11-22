@@ -1,4 +1,6 @@
-package org.example;
+package handlers;
+
+import results.GreetingResult;
 
 public class GreetingHandler implements ICommandHandler {
     public String handle() {

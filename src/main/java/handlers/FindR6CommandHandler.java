@@ -1,4 +1,6 @@
-package org.example;
+package handlers;
+
+import results.FindR6CommandResult;
 
 public class FindR6CommandHandler implements ICommandHandler {
 

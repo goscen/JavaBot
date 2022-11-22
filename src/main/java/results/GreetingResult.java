@@ -1,6 +1,8 @@
-package org.example;
+package results;
 
-public class GreetingResult implements ICommandResult{
+import results.ICommandResult;
+
+public class GreetingResult implements ICommandResult {
     public String getValue(){return "Привет";}
 
     @Override

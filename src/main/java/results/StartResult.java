@@ -1,6 +1,8 @@
-package org.example;
+package results;
 
-public class StartResult implements ICommandResult{
+import commands.StartCommand;
+
+public class StartResult implements ICommandResult {
     public String getValue(){return new StartCommand().getDescription();}
 
     @Override

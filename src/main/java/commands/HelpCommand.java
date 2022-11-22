@@ -1,4 +1,6 @@
-package org.example;
+package commands;
+
+import handlers.HelpHandler;
 
 import java.util.Objects;
 

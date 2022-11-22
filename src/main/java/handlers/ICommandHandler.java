@@ -1,4 +1,4 @@
-package org.example;
+package handlers;
 
 public interface ICommandHandler {
     public String handle();

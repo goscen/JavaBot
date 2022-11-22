@@ -1,4 +1,7 @@
-package org.example;
+package commands;
+
+import handlers.FindR6CommandHandler;
+import handlers.ICommandHandler;
 
 import java.util.Objects;
 

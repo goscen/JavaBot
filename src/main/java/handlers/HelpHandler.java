@@ -1,4 +1,6 @@
-package org.example;
+package handlers;
+
+import results.HelpResult;
 
 public class HelpHandler implements ICommandHandler {
     @Override

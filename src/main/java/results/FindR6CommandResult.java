@@ -1,4 +1,7 @@
-package org.example;
+package results;
+
+import parsers.R6Parser;
+import results.ICommandResult;
 
 public class FindR6CommandResult implements ICommandResult {
     @Override
@@ -13,10 +16,10 @@ public class FindR6CommandResult implements ICommandResult {
         if (parser.bFlag == Boolean.TRUE) {
             return "Not found";
         }
-        String kd = parser.getKD();
-        String hours = parser.getHours();
-        String win = parser.winPercent();
-        String matchPlayed = parser.playedMatch();
+        String kd = parser.getStat("PVPKDRatio");
+        String hours = parser.getStat("PVPTimePlayed");
+        String win = parser.getStat("PVPWLRatio");
+        String matchPlayed = parser.getStat("PVPMatchesPlayed");
         return name + ": \n" + "KD: " + kd + "\n" + "WIN: " + win + "\n"
                 + "Played Match: " + matchPlayed + "\n" + "Hours Played: " + hours;
     }

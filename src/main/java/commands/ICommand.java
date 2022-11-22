@@ -1,4 +1,6 @@
-package org.example;
+package commands;
+
+import handlers.ICommandHandler;
 
 public interface ICommand {
     public String getName();

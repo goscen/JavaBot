@@ -1,4 +1,6 @@
-package org.example;
+package handlers;
+
+import results.StartResult;
 
 public class StartHandler implements ICommandHandler {
     public String handle(){return new StartResult().getValue();}
