@@ -4,14 +4,10 @@ import parsers.R6Parser;
 import results.ICommandResult;
 
 public class FindR6CommandResult implements ICommandResult {
-    @Override
-    public String getValue() {
-        return null;
-    }
 
     @Override
-    public String getValue(String name) {
-        R6Parser parser = new R6Parser(name);
+    public String getValue(String[] name) {
+        R6Parser parser = new R6Parser(name[1]);
         parser.getDocument();
         if (parser.bFlag == Boolean.TRUE) {
             return "Not found";
@@ -20,7 +16,7 @@ public class FindR6CommandResult implements ICommandResult {
         String hours = parser.getStat("PVPTimePlayed");
         String win = parser.getStat("PVPWLRatio");
         String matchPlayed = parser.getStat("PVPMatchesPlayed");
-        return name + ": \n" + "KD: " + kd + "\n" + "WIN: " + win + "\n"
+        return name[1] + ": \n" + "KD: " + kd + "\n" + "WIN: " + win + "\n"
                 + "Played Match: " + matchPlayed + "\n" + "Hours Played: " + hours;
     }
 }
