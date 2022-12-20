@@ -42,7 +42,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             SendMessage message = new SendMessage();
             Buttons buttons = new Buttons();
             message.setReplyMarkup(buttons.MakeButtons());
-            String finalMessage = botLogic.respondToUser(update.getMessage().getText());
+            String finalMessage = botLogic.respondToUser(update.getMessage().getText(),
+                    update.getMessage().getChatId().toString());
             message.setChatId(update.getMessage().getChatId().toString());
             message.setText(finalMessage);
             try {

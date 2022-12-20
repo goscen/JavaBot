@@ -1,6 +1,7 @@
 package commands;
 
 import handlers.ICommandHandler;
+import handlers.LinkCommandHandler;
 
 import java.util.Objects;
 
@@ -17,8 +18,8 @@ public class LinkCommand implements ICommand {
     }
 
     @Override
-    public ICommandHandler getHandler() {
-        return null;
+    public LinkCommandHandler getHandler() {
+        return new LinkCommandHandler();
     }
 
     @Override

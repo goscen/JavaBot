@@ -25,6 +25,7 @@ public class HelpCommand implements ICommand {
     public String getDescription() {
         return "Этот бот может помочь найти статистику игрока в:\n" +
                 "/findr6 - в Rainbow 6: Siege\n" +
-                "/findapex - в Apex Legends";
+                "/findapex - в Apex Legends\n" +
+                "/link - привязать свой аккаунт";
     }
 }
