@@ -1,7 +1,9 @@
 package org.example;
 
+import buttons.Buttons;
 import handlers.*;
 import commands.*;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import parsers.*;
 import results.*;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
