@@ -12,6 +12,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
     public static void main(String[] args) {
+        q;
         String botName = System.getenv("TELEGRAM_BOT_NAME");
         String botToken = System.getenv("TELEGRAM_BOT_TOKEN");
         ICommand[] commands = {new StartCommand(), new HelpCommand(), new GreetingCommand(), new FindR6Command()
