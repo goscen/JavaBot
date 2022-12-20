@@ -11,12 +11,11 @@ public class R6Parser implements IParser {
 
     private Document doc;
     String name;
-    Boolean bFlag = Boolean.FALSE;
+    public Boolean bFlag = Boolean.FALSE;
 
     @Override
     public void getDocument() {
         try {
-
             doc = Jsoup.connect("https://r6.tracker.network/profile/pc/" + name).get();
 
         } catch (IOException e) {
