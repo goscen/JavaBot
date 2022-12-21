@@ -21,6 +21,11 @@ public class BotLogic {
                     splitCommand[0] = id;
                     return cmd.getHandler().handle(splitCommand);
                 } else if (splitCommand.length == 1) {
+                    if (Objects.equals(splitCommand[0], "/link") ||
+                            Objects.equals(splitCommand[0], "/delete")) {
+                        splitCommand[0] = id;
+                        return cmd.getHandler().handle(splitCommand);
+                    }
                     return cmd.getDescription();
                 }
             }

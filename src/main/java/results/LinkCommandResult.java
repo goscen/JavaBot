@@ -9,7 +9,11 @@ public class LinkCommandResult implements ICommandResult {
     @Override
     public String getValue(String[] name) {
         database.connectDatabase();
-        database.addUser(name);
-        return "Успех";
+        if (name.length == 2){
+            return database.addUser(name);
+        }
+        else{
+            return database.getData(name);
+        }
     }
 }

@@ -13,7 +13,9 @@ public class FindR6Command implements ICommand {
 
     @Override
     public String getDescription() {
-        return "Для поиска статистики введите: /findr6 никнейм_игрока ";
+        return "Для поиска статистики введите: /findr6 никнейм_игрока \n" +
+                "Для того что бы привязать аккаунт введите /link никнейм_игрока \n" +
+                "После привязки можно воспользоваться /link без аргумента";
     }
 
     @Override

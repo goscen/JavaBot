@@ -15,7 +15,7 @@ public class Main {
         String botName = System.getenv("TELEGRAM_BOT_NAME");
         String botToken = System.getenv("TELEGRAM_BOT_TOKEN");
         ICommand[] commands = {new StartCommand(), new HelpCommand(), new GreetingCommand(), new FindR6Command()
-                , new FindApexCommand(), new LinkCommand()};
+                , new FindApexCommand(), new LinkCommand(), new DeleteCommand()};
         BotLogic botLogic = new BotLogic(commands);
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);

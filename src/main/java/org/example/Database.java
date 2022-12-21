@@ -26,7 +26,7 @@ public class Database {
         }
     }
 
-    public void addUser(String[] name) {
+    public String addUser(String[] name) {
         String value = findR6CommandResult.getValue(name);
         String[] values = value.split("\n");
         float win = Float.parseFloat(values[2].substring(5, values[2].length() - 1));
@@ -40,24 +40,64 @@ public class Database {
                 stmt.executeUpdate("INSERT INTO rainbow (ID,NICKNAME, KD, WIN, MATCH_PLAYED) VALUES" +
                         "('" + name[0] + "','" + name[1] + "','" + kd + "','" +
                         win + "','" + matchPlayed + "')");
+                return "Успех";
             }
+            return "Аккаунт уже в БД";
         } catch (Exception e) {
-            e.printStackTrace();
+            return "Что-то пошло не так";
         }
     }
 
     public String getData(String[] name) {
+        String[] str = new String[2];
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM rainbow WHERE NICKNAME = " + name[1]);
-            while (rs.next()) {
-                String str = rs.getString("contact_id") + ":" + rs.getString(2);
-                System.out.println("Contact:" + str);
-            }
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rainbow WHERE ID = '" + name[0] + "'");
+            rs.next();
+            String nickname = rs.getString(3);
+            str[1] = nickname;
+            float oldKd = rs.getFloat(1);
+            float oldWin = rs.getFloat(2);
+            int oldMatchPlayed = rs.getInt(4);
+            String value = findR6CommandResult.getValue(str);
+            String[] values = value.split("\n");
+            float win = Float.parseFloat(values[2].substring(5, values[2].length() - 1));
+            float kd = Float.parseFloat(values[1].substring(4, values[1].length()));
+            int matchPlayed = Integer.parseInt(values[3].substring(14, values[3].length()));
 
+            if (matchPlayed == oldMatchPlayed) {
+                return value;
+            }
+            stmt.executeUpdate("UPDATE rainbow SET (kd, win, match_played) =(" + Float.toString(kd) + "," +
+                    "" + Float.toString(win) + "," + Integer.toString(matchPlayed)
+                    + ") where nickname ='" + nickname + "'");
+            String newKd = Float.toString(kd - oldKd);
+            String newWin = Float.toString(win - oldWin);
+            String newMatch = Integer.toString(matchPlayed - oldMatchPlayed);
+            return nickname + ": \n" + "KD: " + Float.toString(kd) + "(" + newKd + ")" + "\n"
+                    + "WIN: " + Float.toString(win) + "(" + newWin + ")" + "\n"
+                    + "Played Match: " + Integer.toString(matchPlayed) + "(" + newMatch + ")";
+
+        } catch (Exception e) {
+            return "Упс... Что-то пошло не так \nВозможно твоего аккауента нет в БД, Введи /link никнейм";
+        }
+
+    }
+
+    public String deleteData(String[] name) {
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT EXISTS (SELECT * FROM rainbow where ID = '"
+                    + name[0] + "')");
+            rs.next();
+            if (Objects.equals(rs.getString(1), "t")) {
+                stmt.executeUpdate("delete from rainbow where id = '" + name[0] + "'");
+            } else {
+                return "Аккаунта нет в бд";
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "sdq";
+        return "Аккаунт удален из БД";
     }
 }
+
 
