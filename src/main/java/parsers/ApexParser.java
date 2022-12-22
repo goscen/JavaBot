@@ -1,7 +1,8 @@
 package parsers;
 
 
-import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.jsoup.nodes.Document;
@@ -33,18 +34,22 @@ public class ApexParser {
                     sb.append("\n");
                 }
 
-                JSONObject jsonObj = new JSONObject(sb.toString());
+                JSONParser parser = new JSONParser();
+                JSONArray dataObject = (JSONArray) parser.parse(String.valueOf(sb));
+                System.out.println(dataObject);
                 ///jsonObj - нормально выводится, осталось его спарсить
-                System.out.println((JSONObject) jsonObj.get("userInfo"));
+
 
             } else {
                 bFlag = Boolean.TRUE;
             }
         } catch (IOException e) {
             bFlag = Boolean.TRUE;
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
-
 
     public ApexParser(String name) {
         this.name = name;

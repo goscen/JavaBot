@@ -1,5 +1,6 @@
 package org.example;
 
+import buttons.Buttons;
 import commands.ICommand;
 import commands.LinkCommand;
 
