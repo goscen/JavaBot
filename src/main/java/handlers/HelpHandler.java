@@ -4,12 +4,7 @@ import results.HelpResult;
 
 public class HelpHandler implements ICommandHandler {
     @Override
-    public String handle() {
-        return new HelpResult().getValue();
-    }
-
-    @Override
-    public String handle(String name) {
-        return null;
+    public String handle(String[] name) {
+        return new HelpResult().getValue(name);
     }
 }
